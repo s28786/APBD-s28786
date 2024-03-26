@@ -178,7 +178,8 @@ public class Program
             Console.WriteLine("3. Remove a container from the ship");
             Console.WriteLine("4. Delete this ship");
             Console.WriteLine("5. Replace a container");
-            Console.WriteLine("6. Exit");
+            Console.WriteLine("6. Transfer a container to another ship");
+            Console.WriteLine("7. Exit");
 
             Console.Write("Enter your choice: ");
             choice = Console.ReadLine();
@@ -215,6 +216,10 @@ public class Program
                     return;
 
                 case "6":
+                    containerShip.TransferAContainerToAnotherShip();
+                    return;
+
+                case "7":
 
                     return;
 

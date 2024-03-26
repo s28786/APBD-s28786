@@ -252,6 +252,43 @@ namespace Task2
                 }
             }
         }
+
+        public void TransferAContainerToAnotherShip()
+        {
+            try
+            {
+                Console.WriteLine("Enter container serial number:");
+                string serialNumber = Console.ReadLine();
+                Container container = Container.getContainerBySerialNumber(serialNumber);
+                if (container == null)
+                {
+                    throw new Exception("Container not found.");
+                }
+                Console.WriteLine("Enter ship name:");
+                string name = Console.ReadLine();
+                ContainerShip containerShip = ContainerShip.findContainerShipByName(name);
+                if (containerShip == null)
+                {
+                    throw new Exception("Ship not found.");
+                }
+                else if (containerShip == this)
+                {
+                    throw new Exception("Cannot transfer to the same ship.");
+                }
+                else if (!containerShip.Containers.Contains(container))
+                {
+                    throw new Exception("Container not found in the current ship.");
+                }
+
+                containerShip.AddContainer(container);
+                removeContainer(container);
+                Console.WriteLine("Container transferred successfully.");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
     }
 
     // Other methods - for loading cargo, removing container, etc.
