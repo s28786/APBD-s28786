@@ -1,4 +1,4 @@
-namespace Task8_New
+namespace Task9
 {
     public class WeatherForecast
     {
