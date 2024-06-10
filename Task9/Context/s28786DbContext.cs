@@ -25,6 +25,7 @@ namespace Task9.Context
         public virtual DbSet<Patient> Patients { get; set; }
         public virtual DbSet<Prescription> Prescriptions { get; set; }
         public virtual DbSet<Prescription_Medicament> Prescription_Medicaments { get; set; }
+        public virtual DbSet<AppUser> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer(_configuration.GetConnectionString("DefaultConnection"));
@@ -53,6 +54,8 @@ namespace Task9.Context
             modelBuilder.Entity<Patient>().HasMany(e => e.Prescriptions)
                     .WithOne(e => e.Patient)
                     .HasForeignKey(e => e.IdPatient);
+
+            modelBuilder.Entity<AppUser>().HasKey(e => e.IdUser);
         }
     }
 }
